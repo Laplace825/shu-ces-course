@@ -10,4 +10,4 @@ There are some materials for the introducing ML course at SHU.
 + `problemx_solution` is my solution to each problem **BUT** I remove all import header and remove some implementation details, you should really depends on your ability to complete.
 + `report.docx` is my course report, you can refer to its form to write your report, I have already stroken out the important details 
 
-Hope you get a good grades. :+1:
+Hope you get good grades. :+1:
