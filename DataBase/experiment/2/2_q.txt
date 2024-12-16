@@ -1,0 +1,9 @@
+../assets/2_q1.png
+../assets/2_q2.png
+../assets/2_q3.png
+../assets/2_q4.png
+../assets/2_q5.png
+../assets/2_q6.png
+../assets/2_q7.png
+../assets/2_q8.png
+../assets/2_q9.png

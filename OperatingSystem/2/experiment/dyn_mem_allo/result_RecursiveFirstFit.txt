@@ -1,0 +1,224 @@
+"
+  ## Total Idle Mem 640KB
+  Task:
+  - Job 1: alloc 130
+  - Job 2: alloc 60
+  - Job 3: alloc 100
+  - Job 2: free
+  - Job 4: alloc 200
+  - Job 3: free
+  - Job 1: free
+  - Job 5: alloc 140
+  - Job 6: alloc 60
+  - Job 7: alloc 50
+  - Job 6: free
+"
+Init
+-> Partial 0
+	 | <idle_begin>:  0  	 |
+	 | <idle_size>: 640 	 | 
+	 | <State>: Idle	 |
+
+Alloc Job 1: 130KB
+-> JobId 1
+	 | <idle_begin>:  0  	 |
+	 | <idle_size>: 130 	 | 
+	 | <State>: Used	 |
+-> Partial 0
+	 | <idle_begin>: 130 	 |
+	 | <idle_size>: 510 	 | 
+	 | <State>: Idle	 |
+
+Alloc Job 2: 60KB
+-> JobId 1
+	 | <idle_begin>:  0  	 |
+	 | <idle_size>: 130 	 | 
+	 | <State>: Used	 |
+-> JobId 2
+	 | <idle_begin>: 130 	 |
+	 | <idle_size>:  60 	 | 
+	 | <State>: Used	 |
+-> Partial 0
+	 | <idle_begin>: 190 	 |
+	 | <idle_size>: 450 	 | 
+	 | <State>: Idle	 |
+
+Alloc Job 3: 100KB
+-> JobId 1
+	 | <idle_begin>:  0  	 |
+	 | <idle_size>: 130 	 | 
+	 | <State>: Used	 |
+-> JobId 2
+	 | <idle_begin>: 130 	 |
+	 | <idle_size>:  60 	 | 
+	 | <State>: Used	 |
+-> JobId 3
+	 | <idle_begin>: 190 	 |
+	 | <idle_size>: 100 	 | 
+	 | <State>: Used	 |
+-> Partial 0
+	 | <idle_begin>: 290 	 |
+	 | <idle_size>: 350 	 | 
+	 | <State>: Idle	 |
+
+Free Job 2
+-> JobId 1
+	 | <idle_begin>:  0  	 |
+	 | <idle_size>: 130 	 | 
+	 | <State>: Used	 |
+-> Partial 1
+	 | <idle_begin>: 130 	 |
+	 | <idle_size>:  60 	 | 
+	 | <State>: Idle	 |
+-> JobId 3
+	 | <idle_begin>: 190 	 |
+	 | <idle_size>: 100 	 | 
+	 | <State>: Used	 |
+-> Partial 0
+	 | <idle_begin>: 290 	 |
+	 | <idle_size>: 350 	 | 
+	 | <State>: Idle	 |
+
+Alloc Job 4: 60KB
+-> JobId 1
+	 | <idle_begin>:  0  	 |
+	 | <idle_size>: 130 	 | 
+	 | <State>: Used	 |
+-> Partial 1
+	 | <idle_begin>: 130 	 |
+	 | <idle_size>:  60 	 | 
+	 | <State>: Idle	 |
+-> JobId 3
+	 | <idle_begin>: 190 	 |
+	 | <idle_size>: 100 	 | 
+	 | <State>: Used	 |
+-> JobId 4
+	 | <idle_begin>: 290 	 |
+	 | <idle_size>:  60 	 | 
+	 | <State>: Used	 |
+-> Partial 0
+	 | <idle_begin>: 350 	 |
+	 | <idle_size>: 290 	 | 
+	 | <State>: Idle	 |
+
+Free Job 3
+-> JobId 1
+	 | <idle_begin>:  0  	 |
+	 | <idle_size>: 130 	 | 
+	 | <State>: Used	 |
+-> Partial 1
+	 | <idle_begin>: 130 	 |
+	 | <idle_size>: 160 	 | 
+	 | <State>: Idle	 |
+-> JobId 4
+	 | <idle_begin>: 290 	 |
+	 | <idle_size>:  60 	 | 
+	 | <State>: Used	 |
+-> Partial 0
+	 | <idle_begin>: 350 	 |
+	 | <idle_size>: 290 	 | 
+	 | <State>: Idle	 |
+
+Free Job 1
+-> Partial 1
+	 | <idle_begin>:  0  	 |
+	 | <idle_size>: 290 	 | 
+	 | <State>: Idle	 |
+-> JobId 4
+	 | <idle_begin>: 290 	 |
+	 | <idle_size>:  60 	 | 
+	 | <State>: Used	 |
+-> Partial 0
+	 | <idle_begin>: 350 	 |
+	 | <idle_size>: 290 	 | 
+	 | <State>: Idle	 |
+
+Alloc Job 5: 140KB
+-> JobId 5
+	 | <idle_begin>:  0  	 |
+	 | <idle_size>: 140 	 | 
+	 | <State>: Used	 |
+-> Partial 1
+	 | <idle_begin>: 140 	 |
+	 | <idle_size>: 150 	 | 
+	 | <State>: Idle	 |
+-> JobId 4
+	 | <idle_begin>: 290 	 |
+	 | <idle_size>:  60 	 | 
+	 | <State>: Used	 |
+-> Partial 0
+	 | <idle_begin>: 350 	 |
+	 | <idle_size>: 290 	 | 
+	 | <State>: Idle	 |
+
+Alloc Job 6: 60KB
+-> JobId 5
+	 | <idle_begin>:  0  	 |
+	 | <idle_size>: 140 	 | 
+	 | <State>: Used	 |
+-> Partial 1
+	 | <idle_begin>: 140 	 |
+	 | <idle_size>: 150 	 | 
+	 | <State>: Idle	 |
+-> JobId 4
+	 | <idle_begin>: 290 	 |
+	 | <idle_size>:  60 	 | 
+	 | <State>: Used	 |
+-> JobId 6
+	 | <idle_begin>: 350 	 |
+	 | <idle_size>:  60 	 | 
+	 | <State>: Used	 |
+-> Partial 0
+	 | <idle_begin>: 410 	 |
+	 | <idle_size>: 230 	 | 
+	 | <State>: Idle	 |
+
+Alloc Job 7: 50KB
+-> JobId 5
+	 | <idle_begin>:  0  	 |
+	 | <idle_size>: 140 	 | 
+	 | <State>: Used	 |
+-> JobId 7
+	 | <idle_begin>: 140 	 |
+	 | <idle_size>:  50 	 | 
+	 | <State>: Used	 |
+-> Partial 1
+	 | <idle_begin>: 190 	 |
+	 | <idle_size>: 100 	 | 
+	 | <State>: Idle	 |
+-> JobId 4
+	 | <idle_begin>: 290 	 |
+	 | <idle_size>:  60 	 | 
+	 | <State>: Used	 |
+-> JobId 6
+	 | <idle_begin>: 350 	 |
+	 | <idle_size>:  60 	 | 
+	 | <State>: Used	 |
+-> Partial 0
+	 | <idle_begin>: 410 	 |
+	 | <idle_size>: 230 	 | 
+	 | <State>: Idle	 |
+
+Free Job 6
+-> JobId 5
+	 | <idle_begin>:  0  	 |
+	 | <idle_size>: 140 	 | 
+	 | <State>: Used	 |
+-> JobId 7
+	 | <idle_begin>: 140 	 |
+	 | <idle_size>:  50 	 | 
+	 | <State>: Used	 |
+-> Partial 1
+	 | <idle_begin>: 190 	 |
+	 | <idle_size>: 100 	 | 
+	 | <State>: Idle	 |
+-> JobId 4
+	 | <idle_begin>: 290 	 |
+	 | <idle_size>:  60 	 | 
+	 | <State>: Used	 |
+-> Partial 0
+	 | <idle_begin>: 350 	 |
+	 | <idle_size>: 290 	 | 
+	 | <State>: Idle	 |
+
+< Done >

@@ -1,0 +1,91 @@
+<mxfile host="65bd71144e" scale="2" border="0">
+    <diagram id="9FbAq4SS4J2GJW-sp-BT" name="第 1 页">
+        <mxGraphModel dx="824" dy="1126" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="#ffffff" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="7" value="订票单" style="edgeStyle=none;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0.042;entryY=0.295;entryDx=0;entryDy=0;fontSize=24;endSize=8;entryPerimeter=0;" parent="1" source="2" target="22" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="730" y="247" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="8" value="取票单" style="edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.018;entryY=0.417;entryDx=0;entryDy=0;fontSize=24;endSize=8;entryPerimeter=0;" parent="1" source="2" target="22" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="730" y="282" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="2" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;顾客&lt;/font&gt;" style="html=1;dashed=0;whitespace=wrap;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="212" width="156" height="138" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="无票通知" style="edgeStyle=none;html=1;exitX=0.012;exitY=0.574;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;fontSize=24;endSize=8;exitPerimeter=0;" parent="1" source="22" target="2" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="730" y="317" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="11" value="取票通知" style="edgeStyle=none;html=1;exitX=0.054;exitY=0.747;exitDx=0;exitDy=0;entryX=1;entryY=1;entryDx=0;entryDy=0;fontSize=24;endSize=8;exitPerimeter=0;" parent="1" source="22" target="2" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="730" y="352" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="12" value="火车票" style="edgeStyle=none;html=1;exitX=0;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0;entryDx=0;entryDy=0;fontSize=24;endSize=8;" parent="1" source="22" target="2" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="730" y="212" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="19" value="" style="edgeStyle=none;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;fontSize=24;endSize=8;" parent="1" target="4" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="917.5" y="352" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="21" value="&lt;span style=&quot;text-align: left; background-color: rgb(251, 251, 251);&quot;&gt;车次车票的已订购、&lt;br&gt;已售出、剩余情况&lt;/span&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=24;" parent="19" vertex="1" connectable="0">
+                    <mxGeometry x="-0.0385" relative="1" as="geometry">
+                        <mxPoint x="53" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="4" value="工作人员" style="html=1;dashed=0;whitespace=wrap;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="730" y="560" width="250" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="&lt;h1&gt;问题2&lt;/h1&gt;&lt;p&gt;画出顶层数据流图&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;fontSize=24;" parent="1" vertex="1">
+                    <mxGeometry x="30" y="20" width="310" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="" style="curved=1;endArrow=classic;html=1;fontSize=24;endSize=8;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.25;exitY=1;exitDx=0;exitDy=0;" parent="1" target="2" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="792.5" y="352" as="sourcePoint"/>
+                        <mxPoint x="460" y="480" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="410" y="480"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="15" value="取票单不合格通知" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=24;" parent="14" vertex="1" connectable="0">
+                    <mxGeometry x="-0.0394" y="-48" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="16" value="" style="curved=1;endArrow=classic;html=1;fontSize=24;endSize=8;entryX=0.75;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" target="2" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="855" y="212" as="sourcePoint"/>
+                        <mxPoint x="590" y="150" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="540" y="130"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="17" value="订票单不合格通知" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=24;" parent="16" vertex="1" connectable="0">
+                    <mxGeometry x="0.0501" y="27" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="18" value="查询请求" style="endArrow=classic;html=1;fontSize=24;endSize=8;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" parent="1" source="4" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="760" y="530" as="sourcePoint"/>
+                        <mxPoint x="792.5" y="352" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="22" value="&lt;font style=&quot;font-size: 16px;&quot;&gt;直达列车车票预售系统&lt;/font&gt;" style="shape=ellipse;html=1;dashed=0;whitespace=wrap;aspect=fixed;perimeter=ellipsePerimeter;" vertex="1" parent="1">
+                    <mxGeometry x="774" y="212" width="168" height="168" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

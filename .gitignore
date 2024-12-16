@@ -1,7 +1,5 @@
 __pycache__/
 
-build/
-
 .cache/*
 
 *.log
@@ -17,7 +15,6 @@ venv.bak/
 
 .idea/
 
-.clangd
 bin/
 .vscode/*
 build/
@@ -25,3 +22,9 @@ cmake-build-debug/
 cmake-build-release/
 .idea/
 .history/
+
+.Ds_Store
+
+*.pdf
+
+target/
