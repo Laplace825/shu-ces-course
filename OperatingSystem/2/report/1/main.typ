@@ -1,84 +1,10 @@
-#set text(
-  font: ("Times New Roman", "Songti SC"),
-  size: 12pt,
-  lang: "zh",
-  region: "cn",
-)
-#set heading(bookmarked: true, numbering: "1.")
-#set par(justify: true, leading: 0.7em)
-#set page(
-  "a4",
-  header-ascent: 2em,
-  header: align(right)[
-    _Operating System (2) Experiment_
-  ],
-  numbering: "1/1",
-)
-
-#show raw: set text(font: "FiraCode Nerd Font Mono", ligatures: true)
-#show heading.where(level: 1): set text(size: 16pt, weight: "bold", font: ("Times New Roman", "Heiti SC"))
-#show heading.where(level: 2): set text(size: 14pt, weight: "bold", font: ("Times New Roman", "Heiti SC"))
-#show heading.where(level: 3): set text(size: 12pt, font: ("Times New Roman", "Heiti SC"))
-
-#let idnt2 = h(2em)
-
-#let code(content, caption: none) = align(
-  center,
-  figure(caption: caption, supplement: [code], numbering: "1")[ #block(
-      fill: rgb(0xf2, 0xf2, 0xf2),
-      inset: 1em,
-      radius: 5pt,
-    )[#content]],
-)
-
-#align(
-  center,
-  text(22pt, font: ("Times New Roman", "Heiti SC"))[
-    *《计算机操作系统》实验报告*
-  ],
-)
-
-#align(center)[
-  #par(spacing: 0.2em)[
-    #line(length: 86%)
-    #line(length: 86%)
-  ]
-]
-
-#grid(align: center, columns: (1.4fr, 2.8fr))[
-  #align(
-    left,
-    text(16pt, font: ("Times New Roman", "Heiti SC"))[
-      #h(3em)*实验题目:* \
-      #h(3em)*姓名:* xxx \
-    ],
-  )
-][
-  #align(
-    left,
-    text(16pt, font: ("Times New Roman", "Heiti SC"))[
-      操作系统的进程调度 \
-      *学号:* 114514#h(1em)*实验日期:* 2024.11.18 \
-    ],
-  )
-]
-
-#align(center)[
-  #line(length: 86%)
-]
+#import "../lib/template.typ": *
+#show: base
+#set_title(title: "操作系统的进程调度", author: "", student_id: 114514, date: "2024.11.18")
 
 = 实验环境
 
-#idnt2 实验环境见下表1。本项目舍弃`try catch`异常处理，使用`std::expected`进行异常处理。引入格式化字符串打印 `<print> header file`。*已提供构建脚本，但本实验必须使用支持ISO C++ 23编译套件，对于GNU/GCC，应使用gcc 14.x 版本。*
-
-#figure(caption: "实验环境")[
-  #table(
-    stroke: none, inset: 0.5em, align: center, columns: (
-      20%,
-      40%,
-    ), table.hline(stroke: 1.2pt), [*OS*], [_Darwin 24.1.0_], table.vline(x: 1), [*CPU*], [_Apple M3 Arm64_], [*Compiler*], [_LLVM Clang++ 19.1.4_], [*C++ Standard*], [_ISO C++23_], [*Build System*], [_CMake_ $ >=$ _3.20_ & _Ninja Build_],table.hline(stroke: 1.2pt),
-  )
-]
+#env_info
 
 = 实验目的
 
@@ -91,7 +17,8 @@
 == 实验总体内容概述
 
 + 设计一个有 n 个进程工行的进程调度程序。每个进程由一个进程控制块`PCB`表示。`PCB`包含下述信息：进程名、进程优先数、进程需要运行的时间、占用CPU的时间以及进程的状态等。可按调度算法的不同而增删。
-+ 调度程序包含2种不同的调度算法，分别为时间片轮转法(Round Robin)、动态优先级调度法(Priority First)，运行时可任选一种，以利于各种算法的分析比较。
++ 调度程序包含2种不同的调度算法，分别为时间片轮转法(Round Robin)、动态优先级调度法(Priority
+  First)，运行时可任选一种，以利于各种算法的分析比较。
 + 系统能显示或打印各进程状态和参数的变化情况，便于观察诸进程的调度过程。
 
 == `PCB`设计
@@ -101,10 +28,23 @@
 
 #figure(caption: "PCB结构")[
   #table(
-    stroke: none, inset: 0.5em, align: center, columns: (
-      40%,
-      40%,
-    ), table.hline(stroke: 1.2pt), [*字段*], [*描述*], table.hline(stroke: 1.2pt), [*进程优先数*], [_pid_], [*进程需要运行的时间*], [_cpu_require_time_], [*占用CPU的时间*], [_cpu_hold_time_], [*进程状态*], [_State_], table.hline(stroke: 1.2pt),
+    stroke: none,
+    inset: 0.5em,
+    align: center,
+    columns: (40%, 40%,),
+    table.hline(stroke: 1.2pt),
+    [*字段*],
+    [*描述*],
+    table.hline(stroke: 1.2pt),
+    [*进程优先数*],
+    [_pid_],
+    [*进程需要运行的时间*],
+    [_cpu_require_time_],
+    [*占用CPU的时间*],
+    [_cpu_hold_time_],
+    [*进程状态*],
+    [_State_],
+    table.hline(stroke: 1.2pt),
   )
 ]
 
@@ -138,10 +78,11 @@
 
 #idnt2 `PCB`控制器功能如下：
 
-#list(indent: 2em)[
-  维护了整个进程调度链，链首作为当前正在运行的进程，其余进程则为`Waiting`状态，等待调度。
-][提供`set_schedule_type`接口，用于设置调度算法。][自动进行进程计数。][可自行指定CPU时间片长度。
-][`schedule`接口，每次根据当前调度算法类型进行单步调度。]
+#list(
+  indent: 2em,
+)[
+维护了整个进程调度链，链首作为当前正在运行的进程，其余进程则为`Waiting`状态，等待调度。
+][提供`set_schedule_type`接口，用于设置调度算法。][自动进行进程计数。][可自行指定CPU时间片长度。 ][`schedule`接口，每次根据当前调度算法类型进行单步调度。]
 
 === `PCB`控制器内部函数
 
@@ -163,10 +104,11 @@
 
 #idnt2 核心函数功能如下，在随报告提交的源码中查阅具体细节，应包括文件`pcb.h pcb.cc`：
 
-#list(indent: 2em)[
-  `insert_pcb_pf`：按照优先级次序插入链表，优先级相同时，插入到该节点之前。
-][`insert_pcb_rr`: 按照时间片轮转插入链表，未完成的节点进行尾插(`push_back`)。][`schedule_running_pf`: 执行单步动态优先级优先算法。][`schedule_running_rr`: 执行单步时间片轮转算法。
-][`pop_front`: 类似双向队列的形式将链表首节点弹出。][`push_back`: 类似双向队列的形式将节点插入表尾巴。][`finish_one`: 将链首节点弹出后修改其状态。]
+#list(
+  indent: 2em,
+)[
+`insert_pcb_pf`：按照优先级次序插入链表，优先级相同时，插入到该节点之前。
+][`insert_pcb_rr`: 按照时间片轮转插入链表，未完成的节点进行尾插(`push_back`)。][`schedule_running_pf`: 执行单步动态优先级优先算法。][`schedule_running_rr`: 执行单步时间片轮转算法。 ][`pop_front`: 类似双向队列的形式将链表首节点弹出。][`push_back`: 类似双向队列的形式将节点插入表尾巴。][`finish_one`: 将链首节点弹出后修改其状态。]
 
 == Priority First 实现
 
@@ -175,7 +117,7 @@
 #idnt2 当进程数只有一个时，直接将该进程运行至结束。
 
 #code(caption: "Priority First Part-1")[
-  ```cpp
+```cpp
   PcbController::ResTuple PcbController::schedule_running_pf() noexcept {
     if (empty()) {
         return ret_false_type(Err::NoEnoughProcess);
@@ -191,7 +133,7 @@
 #idnt2 当进程数至少有2个，而链首进程可以在时间片内运行完成时，让该进程运行至结束并移出链表，并使下一个进程进入`Running`状态。
 
 #code(caption: "Priority First Part-2")[
-  ```cpp
+```cpp
   PcbController::ResTuple PcbController::schedule_running_pf() noexcept {
       ......
       // at least 2 processes
@@ -218,7 +160,7 @@
 #idnt2 对于第一种情况，仍使当前运行进程继续运行。
 
 #code(caption: "Priority First Part-3")[
-  ```cpp
+```cpp
   PcbController::ResTuple PcbController::schedule_running_pf() noexcept {
     ......
     else {
@@ -247,7 +189,7 @@
 将当前运行进程插入到该进程之前。
 
 #code(caption: "Priority First Part-4")[
-  ```cpp
+```cpp
   ......
    PCB* tmp = next_tmp->next;
    while (tmp != nullptr) {
@@ -283,7 +225,6 @@
   ```
 ]
 
-
 == Round Robin 实现
 
 #idnt2 由`PcbController`实现调度算法。`PCB`链首进程为当前运行进程，其余进程为`Waiting`状态。
@@ -291,7 +232,7 @@
 #idnt2 对于当前只有一个进程的情况，直接让该进程执行完全程，返回给外界。
 
 #code(caption: "Round Robin Part-1")[
-  ```cpp
+```cpp
    PcbController::ResTuple PcbController::schedule_running_rr() noexcept {
       if (m_process_count < 1) {
           return ret_false_type(Err::NoEnoughProcess);
@@ -307,7 +248,7 @@
 #idnt2 每次调度时，将链首进程放到链尾，链首进程更新，当前运行进程更新。对于被调度的进程，根据设定时间片数进行调整，当进程当前所需时间片为0时，将进程状态置为`Finish`并从链表中返回给外界，进行回收。
 
 #code(caption: "Round Robin Part-2")[
-  ```cpp
+```cpp
    PcbController::ResTuple PcbController::schedule_running_rr() noexcept {
      ......
       m_now_running->cpu_hold_time += m_time_slice;
@@ -333,7 +274,7 @@
 
 == Priority First 操作过程
 
-#idnt2 向编译好的程序中按下面的格式输入数据。运行结果见 @pf_res.
+#idnt2 向编译好的程序中按下面的格式输入数据。运行结果见 #refer_to[@pf_res].
 
 #figure(caption: "Priority First输入数据")[
   #image("../assets/pf_input.png", width: 350pt)
@@ -341,7 +282,7 @@
 
 == Round Robin 操作过程
 
-#idnt2 在第一步输入时输入`rr`即可，其他输入情况与`Priority First`一致。运行结果见 @rr_res。
+#idnt2 在第一步输入时输入`rr`即可，其他输入情况与`Priority First`一致。运行结果见 #refer_to[@rr_res]。
 
 = 结果
 
@@ -377,11 +318,10 @@
   #image("../assets/pf_3.png", width: 350pt)
 ]
 
-
-
 == Round Robin 运行结果 <rr_res>
 
-#idnt2 每轮输出调度前的链所有进程情况，并输出一次当前运行结果。由于时间片轮转算法分析较为简单，此处只给出最终结果。可以看见是"0 1 2 3 0 2 3 2"，*注意，当只剩下一个进程时会直接执行完成，而不会按步继续*。
+#idnt2 每轮输出调度前的链所有进程情况，并输出一次当前运行结果。由于时间片轮转算法分析较为简单，此处只给出最终结果。可以看见是"0
+1 2 3 0 2 3 2"，*注意，当只剩下一个进程时会直接执行完成，而不会按步继续*。
 
 #figure(caption: "Round Robin运行结果 最终")[
   #image("../assets/rr_turn_final.png", width: 350pt)

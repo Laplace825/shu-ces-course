@@ -1,0 +1,10 @@
+[package]
+name = "page_control"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+addr = { path = "./addr" }
+page = { path = "./page" }
+colored = "2"
+rand = "*"

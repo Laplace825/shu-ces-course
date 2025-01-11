@@ -1,0 +1,96 @@
+Mem:  2
+	 FIFO
+	-> | The page loss times:  934
+	-> | The page loss ratio:  0.91
+Mem:  4
+	 FIFO
+	-> | The page loss times:  880
+	-> | The page loss ratio:  0.86
+Mem:  6
+	 FIFO
+	-> | The page loss times:  816
+	-> | The page loss ratio:  0.80
+Mem:  8
+	 FIFO
+	-> | The page loss times:  755
+	-> | The page loss ratio:  0.74
+Mem:  10
+	 FIFO
+	-> | The page loss times:  698
+	-> | The page loss ratio:  0.68
+Mem:  12
+	 FIFO
+	-> | The page loss times:  644
+	-> | The page loss ratio:  0.63
+Mem:  14
+	 FIFO
+	-> | The page loss times:  589
+	-> | The page loss ratio:  0.58
+Mem:  16
+	 FIFO
+	-> | The page loss times:  532
+	-> | The page loss ratio:  0.52
+Mem:  18
+	 FIFO
+	-> | The page loss times:  464
+	-> | The page loss ratio:  0.45
+Mem:  20
+	 FIFO
+	-> | The page loss times:  397
+	-> | The page loss ratio:  0.39
+Mem:  22
+	 FIFO
+	-> | The page loss times:  311
+	-> | The page loss ratio:  0.30
+Mem:  24
+	 FIFO
+	-> | The page loss times:  287
+	-> | The page loss ratio:  0.28
+Mem:  26
+	 FIFO
+	-> | The page loss times:  220
+	-> | The page loss ratio:  0.21
+Mem:  28
+	 FIFO
+	-> | The page loss times:  149
+	-> | The page loss ratio:  0.15
+Mem:  30
+	 FIFO
+	-> | The page loss times:  90
+	-> | The page loss ratio:  0.09
+Mem:  32
+	 FIFO
+	-> | The page loss times:  32
+	-> | The page loss ratio:  0.03
+Addr : 0x2550	->	Page Id:  0x9 
+Addr : 0x4757	->	Page Id:  0x11 
+Addr : 0x1ea7	->	Page Id:  0x7 
+Addr : 0x2116	->	Page Id:  0x8 
+Addr : 0x3580	->	Page Id:  0xd 
+Addr : 0x528e	->	Page Id:  0x14 
+Addr : 0x3a5f	->	Page Id:  0xe 
+Addr : 0x6b7d	->	Page Id:  0x1a 
+Addr : 0x2edc	->	Page Id:  0xb 
+Addr : 0x217e	->	Page Id:  0x8 
+Addr : 0x2a6c	->	Page Id:  0xa 
+Addr : 0x5b63	->	Page Id:  0x16 
+Addr : 0x64e	->	Page Id:  0x1 
+Addr : 0x1023	->	Page Id:  0x4 
+Addr : 0x4955	->	Page Id:  0x12 
+Addr : 0x538	->	Page Id:  0x1 
+Addr : 0x110f	->	Page Id:  0x4 
+Addr : 0x7613	->	Page Id:  0x1d 
+Addr : 0x6609	->	Page Id:  0x19 
+Addr : 0x2ca4	->	Page Id:  0xb 
+Addr : 0x1564	->	Page Id:  0x5 
+Addr : 0x77f3	->	Page Id:  0x1d 
+Addr : 0x1477	->	Page Id:  0x5 
+Addr : 0x7415	->	Page Id:  0x1d 
+Addr : 0x1ad2	->	Page Id:  0x6 
+Addr : 0x541f	->	Page Id:  0x15 
+Addr : 0x25de	->	Page Id:  0x9 
+Addr : 0x5ec6	->	Page Id:  0x17 
+Addr : 0x4e1	->	Page Id:  0x1 
+Addr : 0x183d	->	Page Id:  0x6 
+Addr : 0x7df9	->	Page Id:  0x1f 
+Addr : 0xe0	->	Page Id:  0x0 

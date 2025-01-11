@@ -1,3 +1,10 @@
+/// show ref: refer_to
+#let refer_to(content) = [
+  #box(stroke: (rest: rgb(0x22, 0xff, 0xf3)))[
+    #text(content, size: 12pt)
+  ]
+]
+
 #let base(content) = {
   set text(font: ("Times New Roman", "Songti SC"), size: 12pt, lang: "zh", region: "cn")
   set heading(bookmarked: true, numbering: "1.")
@@ -6,7 +13,13 @@
     _Operating System (2) Experiment_
   ], numbering: "1/1")
 
+  show link : it => {
+    text(fill: blue)[#underline[\u{1F517} Click to See #it]]
+  }
+  set math.equation(numbering: "(1/1)", number-align: right, block: true)
+
   show raw: set text(ligatures: true)
+  show ref: refer_to
   show heading.where(level: 1): set text(size: 16pt, weight: "bold", font: ("Times New Roman", "Heiti SC"))
   show heading.where(level: 2): set text(size: 14pt, weight: "bold", font: ("Times New Roman", "Heiti SC"))
   show heading.where(level: 3): set text(size: 12pt, font: ("Times New Roman", "Heiti SC"))
@@ -16,11 +29,11 @@
 
 #let idnt2 = h(2em, weak: false)
 
-#let code(content, caption: none) = align(center, figure(
+#let code(content, caption: none) = figure(
   caption: caption,
-  supplement: [code],
+  supplement: [代码],
   numbering: "1",
-)[ #block(fill: rgb(0xf2, 0xf2, 0xf2), inset: 1em, radius: 5pt)[#content] ])
+)[ #block(fill: rgb("#dcdada"), inset: 1em, radius: 5pt)[#content] ]
 
 #let img(path, caption: none, width: 60%, height: none) = figure(caption: caption)[
   #if height != none {
@@ -75,7 +88,7 @@
 = 实验环境
 
 #let env_intro = [
-#idnt2 实验环境见@table_1。本项目舍弃`try catch`异常处理，使用`std::expected`进行异常处理。引入格式化字符串打印 `<print> header file`。
+#idnt2 实验环境见#refer_to[@table_1]。本项目舍弃`try catch`异常处理，使用`std::expected`进行异常处理。引入格式化字符串打印 `<print> header file`。
 *已提供构建脚本，但本实验必须使用支持ISO C++ 23编译套件，对于GNU/GCC，应使用gcc 14.x 版本及以上。*
 ]
 
@@ -106,6 +119,62 @@
   #env_table <table_1>
 ]
 
+#let env_table_without_lang = figure(caption: "实验环境")[
+  #table(
+    stroke: none,
+    inset: 0.5em,
+    align: center,
+    columns: (20%, 40%),
+    table.hline(stroke: 1.2pt),
+    [*OS*],
+    [_Darwin 24.1.0_],
+    table.vline(x: 1),
+    [*CPU*],
+    [_Apple M3 Arm64_],
+    table.hline(stroke: 1.2pt),
+  )
+]
+
+#let env_intro_without_lang = [
+  #idnt2 实验环境见#refer_to[@table_without_lang]。
+]
+
+#let env_info_without_lang = [
+  #env_intro_without_lang
+
+  #env_table_without_lang <table_without_lang>
+]
+
+#let env_intro_rust = [
+#idnt2 实验环境见#refer_to[@table_rs]。本次实验使用 `Rust` 编程语言。运行需要环境已安装 `Rust` 环境。已提供运行脚本 `run-all.sh`。
+]
+
+#let env_table_rust = figure(caption: "实验环境")[
+  #table(
+    stroke: none,
+    inset: 0.5em,
+    align: center,
+    columns: (20%, 40%),
+    table.hline(stroke: 1.2pt),
+    [*OS*],
+    [_Darwin 24.1.0_],
+    table.vline(x: 1),
+    [*CPU*],
+    [_Apple M3 Arm64_],
+    [*Compiler*],
+    [_Rustc 1.83.0_],
+    [*Rust Standard*],
+    [_Rust Stable_],
+    table.hline(stroke: 1.2pt),
+  )
+]
+
+#let env_info_rust = [
+  #env_intro_rust
+
+  #env_table_rust <table_rs>
+]
+
 = 实验目的
 
 = 实验内容
@@ -114,7 +183,7 @@
 
 = 结果
 
-见 @app
+见 #refer_to[@app]
 
 = 体会
 

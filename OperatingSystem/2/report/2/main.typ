@@ -1,7 +1,8 @@
 #import "../lib/template.typ": *
 
 #show: base
-#set_title(title: "死锁观察与避免", author: "xxx", student_id: 114514, date: "2024.11.25")
+#set_title(title: "死锁观察与避免", author: "", student_id: 114514, date: "2024.11.25")
+#show ref:refer_to
 
 = 实验环境
 
@@ -39,7 +40,7 @@
 
 == 系统错误码
 
-#idnt2 系统包括错误码如下@table_3。
+#idnt2 系统包括错误码如下#refer_to[@table_3]。
 
 #my_table(
   caption: "系统错误码",

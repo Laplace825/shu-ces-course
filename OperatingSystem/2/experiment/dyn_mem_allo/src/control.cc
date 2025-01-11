@@ -178,8 +178,6 @@ Result MemControl::alloc_recursive_first_fit(
         return Error(Err::OutOfMem);
     }
 
-    // FIXME: Cur will pointer to Invalid mem because of free (which merge idle
-    // mem)
     static MemNode* cur = m_mem_list.m_head;
 
     while (cur->state != MemState::Idle) {
@@ -354,5 +352,4 @@ Result MemControl::alloc_best_fit(job_id_t id, uint32_t size) noexcept {
 Result MemControl::alloc_worst_fit(job_id_t id, uint32_t size) noexcept {
     return alloc_bw_fit_impl(id, size, false);
 }
-
 } // namespace os
