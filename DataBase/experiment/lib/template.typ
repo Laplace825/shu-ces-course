@@ -23,7 +23,7 @@
 
 #let code(raw) = align(center)[#block(fill: rgb("#dcdcdcd9"), inset: 0.5em, radius: 4pt)[#raw]]
 
-#let code_img(raw, path: path, caption: str) = grid(
+#let code_img(raw, path: "", caption: str) = grid(
   columns: (1.6fr, 2fr),
   inset: 2pt,
   align(center)[#block(fill: rgb("#dcdcdcd9"), inset: 0.5em, radius: 4pt)[#raw]],
@@ -41,8 +41,8 @@
     *学号:* \
     *姓名:* \
   ]), align(left, text(12pt)[
-    何勇乐 \
-    22121639
+    laplace \
+    114514
   ]))
   align(center)[#line(length: 60%)]
 }
